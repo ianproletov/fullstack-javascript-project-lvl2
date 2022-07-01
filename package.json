@@ -1,0 +1,25 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "2-nd hexlet pet project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianproletov/fullstack-javascript-project-lvl2.git"
+  },
+  "keywords": [
+    "hexlet",
+    "pet",
+    "project"
+  ],
+  "author": "ianproletov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianproletov/fullstack-javascript-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/ianproletov/fullstack-javascript-project-lvl2#readme"
+}
