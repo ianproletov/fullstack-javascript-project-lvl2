@@ -20,8 +20,8 @@ jobs:
       - run: make test
       - name: Test and publish code coverage
         uses: paambaati/codeclimate-action@v3
-        env: 
-        CC_TEST_REPORTER_ID: f0fde138160256370a81255dca01304f59f81434324018f3ecc724f45600850c
+        env:
+          CC_TEST_REPORTER_ID: f0fde138160256370a81255dca01304f59f81434324018f3ecc724f45600850c
         with:
           coverageCommand: make test-coverage
           debug: true
