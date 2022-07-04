@@ -21,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/ianproletov/fullstack-javascript-project-lvl2/issues"
   },
-  "homepage": "https://github.com/ianproletov/fullstack-javascript-project-lvl2#readme"
+  "homepage": "https://github.com/ianproletov/fullstack-javascript-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^9.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
 }
