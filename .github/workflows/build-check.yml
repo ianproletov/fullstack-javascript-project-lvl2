@@ -1,4 +1,4 @@
-name: project-check
+name: build-check
 
 on:
   - push
@@ -19,7 +19,7 @@ jobs:
       - run: make lint
       - run: make test
       - name: Test and publish code coverage
-        uses: paambaati/codeclimate-action@v3
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: f0fde138160256370a81255dca01304f59f81434324018f3ecc724f45600850c
         with:
