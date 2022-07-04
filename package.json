@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "2-nd hexlet pet project",
-  "main": "src/index.js",
+  "main": "index.js",
   "type": "module",
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/ianproletov/fullstack-javascript-project-lvl2#readme",
   "dependencies": {
-    "commander": "^9.3.0"
+    "commander": "^9.3.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
