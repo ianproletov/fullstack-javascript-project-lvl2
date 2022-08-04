@@ -6,4 +6,4 @@
 #### JSON demo for plain files
 [![asciicast](https://asciinema.org/a/506125.svg)](https://asciinema.org/a/506125)
 #### yaml demo for plain files
-<script id="asciicast-512635" src="https://asciinema.org/a/512635.js" async></script>
+[![asciicast](https://asciinema.org/a/512635.svg)](https://asciinema.org/a/512635)
