@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
-import yaml from 'js-yaml';
+import getParser from './src/parsers.js';
 
 const getAbsPath = (filepath) => path.resolve(process.cwd(), filepath);
 
@@ -23,15 +23,6 @@ const actions = [
     isValid: () => true,
   },
 ];
-
-const getParser = (extname) => {
-  const map = {
-    '.json': JSON.parse,
-    '.yml': yaml.load,
-    '.yaml': yaml.load,
-  };
-  return map[extname];
-};
 
 const buildDiff = (data1, data2) => {
   const unsortedKeys = _.union(Object.keys(data1), Object.keys(data2));
