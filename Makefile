@@ -3,7 +3,7 @@ install:
 gendiff-help:
 	node bin/gendiff.js --help
 gendiff:
-	node bin/gendiff.js __tests__/__fixtures__/file1.json __tests__/__fixtures__/file2.json 
+	node bin/gendiff.js __tests__/__fixtures__/before.json __tests__/__fixtures__/after.json 
 publish:
 	npm publish --dry-run
 lint:
