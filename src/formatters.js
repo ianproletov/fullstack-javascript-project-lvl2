@@ -10,7 +10,7 @@ const stringify = (content, deep) => {
   return ['{', ...lines, `${replacer.repeat(deep)}}`].join('\n');
 };
 
-export default (sourceTree) => {
+const makeStylish = (sourceTree) => {
   const iter = (tree, deep) => {
     const map = {
       same: ({ key, content }) => `    ${key}: ${stringify(content, deep + 1)}`,
@@ -31,4 +31,11 @@ export default (sourceTree) => {
     return ['{', ...lines, `${replacer.repeat(deep)}}`].join('\n');
   };
   return iter(sourceTree, 0);
+};
+
+export default (format) => {
+  const map = {
+    stylish: makeStylish,
+  };
+  return map[format];
 };
