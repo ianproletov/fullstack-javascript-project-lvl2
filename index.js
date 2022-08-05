@@ -2,54 +2,40 @@ import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
 import getParser from './src/parsers.js';
+import makeStylish from './src/formatters.js';
 
 const getAbsPath = (filepath) => path.resolve(process.cwd(), filepath);
 
-const actions = [
-  {
-    action: (value1) => ({ type: 'deleted', content: value1 }),
-    isValid: (key, data1, data2) => _.has(data1, key) && !_.has(data2, key),
-  },
-  {
-    action: (value1, value2) => ({ type: 'added', content: value2 }),
-    isValid: (key, data1, data2) => !_.has(data1, key) && _.has(data2, key),
-  },
-  {
-    action: (value1) => ({ type: 'same', content: value1 }),
-    isValid: (key, data1, data2) => data1[key] === data2[key],
-  },
-  {
-    action: (value1, value2) => ({ type: 'updated', previous: value1, next: value2 }),
-    isValid: () => true,
-  },
-];
-
-const buildDiff = (data1, data2) => {
-  const unsortedKeys = _.union(Object.keys(data1), Object.keys(data2));
+const buildDiff = (beforeData, afterData) => {
+  const actions = [
+    {
+      action: (value1, value2) => ({ children: buildDiff(value1, value2), type: 'deep' }),
+      isValid: (key, data1, data2) => _.isObject(data1[key]) && _.isObject(data2[key]),
+    },
+    {
+      action: (value1) => ({ type: 'deleted', content: value1 }),
+      isValid: (key, data1, data2) => _.has(data1, key) && !_.has(data2, key),
+    },
+    {
+      action: (value1, value2) => ({ type: 'added', content: value2 }),
+      isValid: (key, data1, data2) => !_.has(data1, key) && _.has(data2, key),
+    },
+    {
+      action: (value1) => ({ type: 'same', content: value1 }),
+      isValid: (key, data1, data2) => data1[key] === data2[key],
+    },
+    {
+      action: (value1, value2) => ({ type: 'updated', previous: value1, next: value2 }),
+      isValid: () => true,
+    },
+  ];
+  const unsortedKeys = _.union(Object.keys(beforeData), Object.keys(afterData));
   const keys = _.sortBy(unsortedKeys);
   const result = keys.map((key) => {
-    const { action } = actions.find(({ isValid }) => isValid(key, data1, data2));
-    return { key, ...action(data1[key], data2[key]) };
+    const { action } = actions.find(({ isValid }) => isValid(key, beforeData, afterData));
+    return { key, ...action(beforeData[key], afterData[key]) };
   });
   return result;
-};
-
-const map = {
-  same: ({ key, content }) => `    ${key}: ${content}`,
-  added: ({ key, content }) => `  + ${key}: ${content}`,
-  deleted: ({ key, content }) => `  - ${key}: ${content}`,
-  updated: ({ key, previous, next }) => [
-    `  - ${key}: ${previous}`,
-    `  + ${key}: ${next}`,
-  ],
-};
-
-const makeImage = (tree) => {
-  const lines = tree.flatMap((data) => {
-    const { type } = data;
-    return map[type](data);
-  });
-  return ['{', ...lines, '}'].join('\n');
 };
 
 export default (filepath1, filepath2) => {
@@ -60,6 +46,6 @@ export default (filepath1, filepath2) => {
   const data1 = parser1(fs.readFileSync(abspath1, 'utf-8'));
   const data2 = parser2(fs.readFileSync(abspath2, 'utf-8'));
   const tree = buildDiff(data1, data2);
-  const result = makeImage(tree);
+  const result = makeStylish(tree);
   return result;
 };

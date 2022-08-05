@@ -6,7 +6,7 @@ const getFixturePath = (filename) => path.join('__tests__/__fixtures__', filenam
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 describe('plain json', () => {
-  it.each(['json', 'yml'])('%p diff test', (ext) => {
+  it.each(['json'])('%p diff test', (ext) => {
     const beforeName = `before.${ext}`;
     const afterName = `after.${ext}`;
     const actual = gendiff(getFixturePath(beforeName), getFixturePath(afterName));
