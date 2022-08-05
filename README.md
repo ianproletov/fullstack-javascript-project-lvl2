@@ -7,3 +7,4 @@
 [![asciicast](https://asciinema.org/a/506125.svg)](https://asciinema.org/a/506125)
 #### yaml demo for plain files
 [![asciicast](https://asciinema.org/a/512635.svg)](https://asciinema.org/a/512635)
+#### Stylish demo for deep files
