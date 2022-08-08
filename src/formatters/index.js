@@ -5,6 +5,7 @@ import makePlain from './plain.js';
 const map = {
   stylish: makeStylish,
   plain: makePlain,
+  json: JSON.stringify,
 };
 
 export default (format) => {

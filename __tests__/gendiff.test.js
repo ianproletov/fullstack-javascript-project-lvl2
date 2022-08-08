@@ -5,7 +5,7 @@ import gendiff from '../index.js';
 const getFixturePath = (filename) => path.join('__tests__/__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-describe.each(['default', 'stylish', 'plain'])('%p format', (format) => {
+describe.each(['default', 'stylish', 'plain', 'json'])('%p format', (format) => {
   it.each(['json', 'yml'])('%p diff test', (ext) => {
     const beforeName = `before.${ext}`;
     const afterName = `after.${ext}`;
