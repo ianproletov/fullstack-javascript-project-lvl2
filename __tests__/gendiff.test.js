@@ -15,3 +15,7 @@ describe.each(['stylish', 'plain'])('%p format', (format) => {
     expect(actual).toBe(expected);
   });
 });
+
+test('should throw error if formatter is wrong', () => {
+  expect(() => gendiff(getFixturePath('before.json'), getFixturePath('after.json'), 'wrong')).toThrowError(/Unknown format/);
+});
