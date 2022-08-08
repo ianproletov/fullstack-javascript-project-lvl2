@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import getParser from './src/parsers.js';
-import format from './src/formatters.js';
+import format from './src/formatters/index.js';
 import buildDiff from './src/differ.js';
 
 const getAbsPath = (filepath) => path.resolve(process.cwd(), filepath);

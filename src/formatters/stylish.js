@@ -33,9 +33,4 @@ const makeStylish = (sourceTree) => {
   return iter(sourceTree, 0);
 };
 
-export default (format) => {
-  const map = {
-    stylish: makeStylish,
-  };
-  return map[format];
-};
+export default makeStylish;

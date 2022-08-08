@@ -9,3 +9,5 @@
 [![asciicast](https://asciinema.org/a/512635.svg)](https://asciinema.org/a/512635)
 #### Stylish demo for deep files
 [![asciicast](https://asciinema.org/a/512878.svg)](https://asciinema.org/a/512878)
+#### Plain demo
+[![asciicast](https://asciinema.org/a/513506.svg)](https://asciinema.org/a/513506)
